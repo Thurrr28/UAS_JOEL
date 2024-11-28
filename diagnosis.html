@@ -1,0 +1,182 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Sistem Pakar Penyakit Tanaman - Diagnosis
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100 font-roboto">
+  <header class="bg-green-600 text-white p-4">
+   <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold">
+     Sistem Pakar Penyakit Tanaman
+    </h1>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="hover:underline" href="index.html">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="diagnosis.html">
+        Diagnosis
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="penyakit.html">
+        Daftar Penyakit
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="hama.html">
+        Daftar Hama
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto p-4">
+   <section>
+    <h2 class="text-xl font-bold mb-4">
+     Diagnosis Penyakit
+    </h2>
+    <form class="bg-white p-4 rounded shadow" id="diagnosisForm">
+     <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="gejala">
+       Gejala yang Dialami:
+      </label>
+      <textarea class="w-full p-2 border border-gray-300 rounded" id="gejala" placeholder="Deskripsikan gejala yang dialami tanaman..." rows="4"></textarea>
+     </div>
+     <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" type="submit">
+      Diagnosa
+     </button>
+    </form>
+    <div class="mt-8" id="diagnosisResult">
+    </div>
+   </section>
+  </main>
+  <footer class="bg-gray-800 text-white p-4 mt-8">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2024 Sistem Pakar Penyakit Tanaman Sawit.
+    </p>
+   </div>
+  </footer>
+  <script>
+   document.getElementById('diagnosisForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const gejala = document.getElementById('gejala').value.toLowerCase();
+      let result = '';
+
+      if (gejala.includes('akar membusuk') || gejala.includes('daun menguning') || gejala.includes('pertumbuhan terhambat')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Penyakit Busuk Akar (Blast Disease)</h3>
+            <p><strong>Penyebab:</strong> Jamur, terutama dari genus <em>Phytophthora</em>.</p>
+            <p><strong>Gejala:</strong> Daun menguning, pertumbuhan terhambat, dan akar membusuk.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Penggunaan fungisida yang sesuai.</li>
+              <li>Perbaikan drainase untuk menghindari genangan air.</li>
+            </ul>
+          </div>
+        `;
+      } else if (gejala.includes('batang membusuk') || gejala.includes('tanaman mudah tumbang')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Penyakit Busuk Pangkal Batang (Basal Stem Rot)</h3>
+            <p><strong>Penyebab:</strong> Infeksi jamur Ganoderma.</p>
+            <p><strong>Gejala:</strong> Batang membusuk, daun menguning, dan tanaman mudah tumbang.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Pemangkasan bagian yang terinfeksi.</li>
+              <li>Penggunaan fungisida dan pengelolaan sanitasi kebun.</li>
+            </ul>
+          </div>
+        `;
+      } else if (gejala.includes('daun berlubang') || gejala.includes('pertumbuhan terhambat')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Kumbang Badak (Oryctes rhinoceros)</h3>
+            <p><strong>Penyebab:</strong> Serangan larva kumbang yang memakan jaringan tanaman.</p>
+            <p><strong>Gejala:</strong> Daun yang belum membuka berlubang, pertumbuhan terhambat.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Penggunaan insektisida.</li>
+              <li>Penerapan teknik pengendalian hayati dengan memanfaatkan musuh alami.</li>
+            </ul>
+          </div>
+        `;
+      } else if (gejala.includes('daun rusak') || gejala.includes('daun berlubang')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Ulat Api</h3>
+            <p><strong>Penyebab:</strong> Beberapa spesies ulat seperti <em>Setothosea asigna</em>.</p>
+            <p><strong>Gejala:</strong> Kerusakan pada daun, daun menjadi berlubang.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Penggunaan insektisida yang tepat.</li>
+              <li>Pemantauan rutin untuk deteksi dini.</li>
+            </ul>
+          </div>
+        `;
+      } else if (gejala.includes('tunas membusuk') || gejala.includes('daun menguning')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Penyakit Rajungan (Bud Rot)</h3>
+            <p><strong>Penyebab:</strong> Infeksi jamur <em>Phytophthora palmivora</em>.</p>
+            <p><strong>Gejala:</strong> Tunas membusuk, daun menguning.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Penggunaan fungisida.</li>
+              <li>Pengelolaan kelembapan tanah yang baik.</li>
+            </ul>
+          </div>
+        `;
+      } else if (gejala.includes('akar rusak') || gejala.includes('pertumbuhan terhambat')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Nematoda</h3>
+            <p><strong>Penyebab:</strong> Serangan nematoda parasit yang merusak akar.</p>
+            <p><strong>Gejala:</strong> Pertumbuhan tanaman terhambat, daun menguning.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Rotasi tanaman.</li>
+              <li>Penggunaan nematisida.</li>
+            </ul>
+          </div>
+        `;
+      } else if (gejala.includes('daun terlipat') || gejala.includes('daun rusak')) {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Ulat Kantong</h3>
+            <p><strong>Penyebab:</strong> Serangan ulat yang membuat kantong dari daun.</p>
+            <p><strong>Gejala:</strong> Daun terlipat dan rusak.</p>
+            <p><strong>Cara Penanganan:</strong></p>
+            <ul class="list-disc list-inside">
+              <li>Penggunaan insektisida.</li>
+              <li>Pengumpulan dan penghancuran kantong ulat secara manual.</li>
+            </ul>
+          </div>
+        `;
+      } else {
+        result = `
+          <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-bold">Tidak Diketahui</h3>
+            <p>Gejala yang Anda masukkan tidak cocok dengan penyakit atau hama yang ada dalam database kami. Silakan konsultasikan dengan ahli pertanian untuk diagnosis lebih lanjut.</p>
+          </div>
+        `;
+      }
+
+      document.getElementById('diagnosisResult').innerHTML = result;
+    });
+  </script>
+ </body>
+</html>
